@@ -1,0 +1,68 @@
+[
+  {
+    "id": 1,
+    "name": "Luke Skywalker",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/en/9/9b/Luke_Skywalker.png",
+    "firstAppearedInFilm": {
+      "title": "A New Hope",
+      "releasedAt": "1977-05-25"
+    },
+    "upVoteCount": 22,
+    "downVoteCount": 4
+  },
+  {
+    "id": 2,
+    "name": "Princess Leia",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/en/1/1b/Princess_Leia%27s_characteristic_hairstyle.jpg",
+    "firstAppearedInFilm": {
+      "title": "A New Hope",
+      "releasedAt": "1977-05-25"
+    },
+    "upVoteCount": 19,
+    "downVoteCount": 2
+  },
+  {
+    "id": 3,
+    "name": "Han Solo",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/en/b/be/Han_Solo_depicted_in_promotional_image_for_Star_Wars_%281977%29.jpg",
+    "firstAppearedInFilm": {
+      "title": "A New Hope",
+      "releasedAt": "1977-05-25"
+    },
+    "upVoteCount": 39,
+    "downVoteCount": 13
+  },
+  {
+    "id": 4,
+    "name": "Jar Jar Binks",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/en/4/4b/Jjportrait.jpg",
+    "firstAppearedInFilm": {
+      "title": "The Phantom Menace",
+      "releasedAt": "1999-05-19"
+    },
+    "upVoteCount": 9,
+    "downVoteCount": 122
+  },
+  {
+    "id": 5,
+    "name": "Yoda",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/en/9/9b/Yoda_Empire_Strikes_Back.png",
+    "firstAppearedInFilm": {
+      "title": "The Empire Strikes Back",
+      "releasedAt": "1980-06-20"
+    },
+    "upVoteCount": 97,
+    "downVoteCount": 6
+  },
+  {
+    "id": 6,
+    "name": "Darth Vader",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/en/7/76/Darth_Vader.jpg",
+    "firstAppearedInFilm": {
+      "title": "A New Hope",
+      "releasedAt": "1977-05-25"
+    },
+    "upVoteCount": 81,
+    "downVoteCount": 22
+  }
+]
