@@ -1,16 +1,23 @@
 <script>
-  import Header from './components/Layout/Header.svelte';
-  import Footer from './components/Layout/Footer.svelte';
+  import { setupI18n, isLocaleLoaded } from "./services/i18n";
+  import Header from "./components/Layout/Header.svelte";
+  import Footer from "./components/Layout/Footer.svelte";
   import CharacterList from
-    './components/Characters/CharacterList.svelte';
+    "./components/Characters/CharacterList.svelte";
+
+   setupI18n({ withLocale: "ar", fallbackLocale: "en" });
 </script>
 
 <main role="main">
-  <Header />
+    {#if $isLocaleLoaded}
+      <Header />
 
-  <CharacterList />
+      <CharacterList />
 
-  <Footer />
+      <Footer />
+    {:else}
+      <p>Loading...</p>
+    {/if}
 </main>
 
 <style>
