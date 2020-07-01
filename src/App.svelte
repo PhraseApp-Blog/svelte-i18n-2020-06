@@ -5,13 +5,13 @@
     './components/Characters/CharacterList.svelte';
 </script>
 
+<Header />
+
 <main role="main">
-  <Header />
-
   <CharacterList />
-
-  <Footer />
 </main>
+
+<Footer />
 
 <style>
   main { padding: 0 1rem; }
