@@ -8,17 +8,17 @@
    setupI18n({ withLocale: "ar", fallbackLocale: "en" });
 </script>
 
-<main role="main">
-    {#if $isLocaleLoaded}
-      <Header />
+{#if $isLocaleLoaded}
+  <Header />
 
-      <CharacterList />
+  <main role="main">
+        <CharacterList />
+  </main>
 
-      <Footer />
-    {:else}
-      <p>Loading...</p>
-    {/if}
-</main>
+  <Footer />
+{:else}
+  <p>Loading...</p>
+{/if}
 
 <style>
   main { padding: 0 1rem; }
