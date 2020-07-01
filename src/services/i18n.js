@@ -1,4 +1,4 @@
-import { get, derived } from "svelte/store";
+import { get, derived, writable } from "svelte/store";
 import {
   addMessages,
   locale,
@@ -11,30 +11,16 @@ const MESSAGE_FILE_URL_TEMPLATE = "/lang/{locale}.json";
 
 let _activeLocale;
 
+const isLoading = writable(false);
+
 function setupI18n(options) {
-  const { withLocale: locale_, fallbackLocale } = options;
+  const { withLocale: locale_ } = options;
 
-  init({
-    initialLocale: locale_,
-    fallbackLocale: fallbackLocale || locale_,
-  });
-
-  if (
-    fallbackLocale &&
-    fallbackLocale !== locale_ &&
-    !hasLoadedLocale(fallbackLocale)
-  ) {
-    const fallbackFileUrl = MESSAGE_FILE_URL_TEMPLATE.replace(
-      "{locale}",
-      fallbackLocale,
-    );
-
-    loadJson(fallbackFileUrl).then((messages) => {
-      addMessages(fallbackLocale, messages);
-    });
-  }
+  init({ initialLocale: locale_ });
 
   if (!hasLoadedLocale(locale_)) {
+    isLoading.set(true);
+
     const messsagesFileUrl = MESSAGE_FILE_URL_TEMPLATE.replace(
       "{locale}",
       locale_,
@@ -46,13 +32,16 @@ function setupI18n(options) {
       addMessages(locale_, messages);
 
       locale.set(locale_);
+
+      isLoading.set(false);
     });
   }
 }
 
 const isLocaleLoaded = derived(
-  dictionary,
-  ($dictionary) => !!$dictionary[_activeLocale],
+  [dictionary, isLoading],
+  ([$dictionary, $isLoading]) =>
+    !$isLoading && !!$dictionary[_activeLocale],
 );
 
 function loadJson(url) {
@@ -63,4 +52,4 @@ function hasLoadedLocale(locale) {
   return get(dictionary)[locale];
 }
 
-export { _, setupI18n, isLocaleLoaded };
+export { _, setupI18n, isLocaleLoaded, locale };
