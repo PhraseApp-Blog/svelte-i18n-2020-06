@@ -2,15 +2,25 @@
   import { locale } from "../../services/i18n";
   import Character from './Character.svelte';
 
-  function fetchCharacters() {
-      return fetch(`/data/${$locale}.json`)
-              .then(response => response.json());
-  }
+  let characters = [];
+  let isLoading = true;
+
+  locale.subscribe((newLocale) => {
+    isLoading = true;
+
+    fetch(`/data/${newLocale}.json`)
+      .then(response => response.json())
+      .then((json) => {
+        characters = json;
+
+        isLoading = false;
+      });
+  });
 </script>
 
-{#await fetchCharacters()}
+{#if isLoading}
   <p>Loading...</p>
-{:then characters}
+{:else}
   <div class="columns is-mobile is-multiline">
     {#each characters as character}
       <div
@@ -20,6 +30,4 @@
       </div>
     {/each}
   </div>
-{:catch error}
-  <p>There was a problem loading characters.</p>
-{/await}
+{/if}

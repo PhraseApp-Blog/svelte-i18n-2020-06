@@ -23,7 +23,9 @@
       bulmaUrl($dir);
   }
 
-  $: { document.title = $_("app_title"); }
+  $: if ($isLocaleLoaded) {
+    document.title = $_("app_title");
+  }
 </script>
 
 {#if $isLocaleLoaded}

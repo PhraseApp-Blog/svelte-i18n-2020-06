@@ -1,5 +1,6 @@
 {
   "app_title": "Rebel Voter",
   "app_slogan": "Your favorite Star Wars characters",
+  "total_votes": "{n, plural, =0 {No votes yet} one {# vote} other {# votes}}",
   "footer": "Companion to a <a href=\"{phraseUrl}\">Phrase blog</a> article. Made with <a href=\"{svelteUrl}\">Svelte</a> &amp; <a href=\"{bulmaUrl}\">Bulma</a>."
 }

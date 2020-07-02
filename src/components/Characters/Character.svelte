@@ -1,5 +1,6 @@
 <script>
-  import VotingButton from '../UI/VotingButton.svelte';
+  import { _ } from "../../services/i18n";
+  import VotingButton from "../UI/VotingButton.svelte";
 
   export let character;
 
@@ -13,6 +14,8 @@
     upVoteCount,
     downVoteCount,
   } = character;
+
+  $: totalVoteCount = upVoteCount + downVoteCount;
 </script>
 
 <style>
@@ -42,9 +45,9 @@
     margin-bottom: 0.33rem;
   }
 
-  .first-appeared-title {
-    font-style: italic;
-  }
+  .first-appeared-title { font-style: italic; }
+
+  .buttons { margin-bottom: 0;}
 </style>
 
 <div class="box">
@@ -66,19 +69,23 @@
         {firstAppearedInFilm.releasedAt}
       </p>
 
-        <div class="buttons has-addons">
-          <VotingButton
-            type="up"
-            count={upVoteCount}
-            on:click={() => upVoteCount += 1}
-          />
+      <div class="buttons has-addons">
+        <VotingButton
+          type="up"
+          count={upVoteCount}
+          on:click={() => upVoteCount += 1}
+        />
 
-          <VotingButton
-            type="down"
-            count={downVoteCount}
-            on:click={() => downVoteCount += 1}
-          />
-        </div>
+        <VotingButton
+          type="down"
+          count={downVoteCount}
+          on:click={() => downVoteCount += 1}
+        />
+      </div>
+
+      <p class="is-size-7">
+        {$_("total_votes", {values: {n: totalVoteCount}})}
+      </p>
     </div>
   </div>
 </div>
