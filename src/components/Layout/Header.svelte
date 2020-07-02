@@ -4,7 +4,7 @@
 
 <header class="hero">
     <div class="hero-body">
-        <div class="contiainer">
+        <div class="container">
             <h1 class="title">{$_("app_title")}</h1>
 
             <h2 class="subtitle">{$_("app_slogan")}</h2>
