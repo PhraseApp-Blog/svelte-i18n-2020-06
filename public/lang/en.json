@@ -1,4 +1,5 @@
 {
   "app_title": "Rebel Voter",
-  "app_slogan": "Your favorite Star Wars characters"
+  "app_slogan": "Your favorite Star Wars characters",
+  "footer": "Companion to a <a href=\"{phraseUrl}\">Phrase blog</a> article. Made with <a href=\"{svelteUrl}\">Svelte</a> &amp; <a href=\"{bulmaUrl}\">Bulma</a>."
 }

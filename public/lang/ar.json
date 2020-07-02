@@ -1,4 +1,5 @@
 {
   "app_title": "الناخب المتمرد",
-  "app_slogan": "شخصياتك المفضلة في حرب النجوم"
+  "app_slogan": "شخصياتك المفضلة في حرب النجوم",
+  "footer": "ملحق لمقال <a href=\"{phraseUrl}\">مدونة Phrase</a>. صنع بواسطة <a href=\"{svelteUrl}\">Svelte</a> و <a href=\"{bulmaUrl}\">Bulma</a>."
 }
