@@ -2,5 +2,6 @@
   "app_title": "الناخب المتمرد",
   "app_slogan": "شخصياتك المفضلة في حرب النجوم",
   "total_votes": "{n, plural, =0 {لا توجد أصوات بعد} one {صوت #} two {صوتان} few {# أصوات} other {# صوت}}",
+  "first_appeared_in": "أول ظهور في «{title}»،",
   "footer": "ملحق لمقال <a href=\"{phraseUrl}\">مدونة Phrase</a>. صنع بواسطة <a href=\"{svelteUrl}\">Svelte</a> و <a href=\"{bulmaUrl}\">Bulma</a>."
 }

@@ -6,6 +6,8 @@ import {
   dictionary,
   _,
   getLocaleFromNavigator,
+  date,
+  number,
 } from "svelte-i18n";
 import { locales, fallbackLocale } from "../config/l10n";
 
@@ -73,4 +75,12 @@ function supported(locale) {
   }
 }
 
-export { _, setupI18n, isLocaleLoaded, locale, dir };
+export {
+  _,
+  setupI18n,
+  isLocaleLoaded,
+  locale,
+  dir,
+  date,
+  number,
+};

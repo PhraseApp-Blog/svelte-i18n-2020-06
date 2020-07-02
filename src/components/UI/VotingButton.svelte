@@ -1,4 +1,6 @@
 <script>
+  import { number } from "../../services/i18n";
+
   export let count = 0;
   export let type = "up";
 </script>
@@ -14,5 +16,5 @@
     <span class="far fa-thumbs-{type}" />
   </span>
 
-  <span class="button-count">{count}</span>
+  <span class="button-count">{$number(count)}</span>
 </button>

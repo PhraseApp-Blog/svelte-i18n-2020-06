@@ -1,5 +1,5 @@
 <script>
-  import { _ } from "../../services/i18n";
+  import { _, date } from "../../services/i18n";
   import VotingButton from "../UI/VotingButton.svelte";
 
   export let character;
@@ -45,8 +45,6 @@
     margin-bottom: 0.33rem;
   }
 
-  .first-appeared-title { font-style: italic; }
-
   .buttons { margin-bottom: 0;}
 </style>
 
@@ -62,11 +60,13 @@
       </h3>
 
       <p class="first-appeared">
-        First appeared in
-        <span class="first-appeared-title">
-          {firstAppearedInFilm.title},
-        </span>
-        {firstAppearedInFilm.releasedAt}
+        {@html $_("first_appeared_in", {
+          values: { title: firstAppearedInFilm.title }})}
+
+        {$date(
+          new Date(firstAppearedInFilm.releasedAt),
+          { format: "medium" }
+        )}
       </p>
 
       <div class="buttons has-addons">
