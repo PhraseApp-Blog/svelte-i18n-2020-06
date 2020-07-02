@@ -4,6 +4,7 @@
     isLocaleLoaded,
     locale,
     dir,
+    _,
   } from "./services/i18n";
   import { bulmaUrl } from "./services/css";
   import Header from "./components/Layout/Header.svelte";
@@ -21,6 +22,8 @@
     document.getElementById("bulmaCssLink").href =
       bulmaUrl($dir);
   }
+
+  $: { document.title = $_("app_title"); }
 </script>
 
 {#if $isLocaleLoaded}
