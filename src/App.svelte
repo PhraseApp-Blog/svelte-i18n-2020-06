@@ -11,7 +11,7 @@
   import CharacterList from
     "./components/Characters/CharacterList.svelte";
 
-   setupI18n({ withLocale: "en" });
+   setupI18n();
 </script>
 
 {#if $isLocaleLoaded}

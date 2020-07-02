@@ -5,7 +5,9 @@ import {
   init,
   dictionary,
   _,
+  getLocaleFromNavigator,
 } from "svelte-i18n";
+import { locales, fallbackLocale } from "../config/l10n";
 
 const MESSAGE_FILE_URL_TEMPLATE = "/lang/{locale}.json";
 
@@ -13,8 +15,11 @@ let _activeLocale;
 
 const isLoading = writable(false);
 
-function setupI18n(options) {
-  const { withLocale: locale_ } = options;
+function setupI18n(options = {}) {
+  const locale_ = supported(
+    options.withLocale ||
+      language(getLocaleFromNavigator()),
+  );
 
   init({ initialLocale: locale_ });
 
@@ -50,6 +55,18 @@ function loadJson(url) {
 
 function hasLoadedLocale(locale) {
   return get(dictionary)[locale];
+}
+
+function language(locale) {
+  return locale.replace("_", "-").split("-")[0];
+}
+
+function supported(locale) {
+  if (Object.keys(locales).includes(locale)) {
+    return locale;
+  } else {
+    return fallbackLocale;
+  }
 }
 
 export { _, setupI18n, isLocaleLoaded, locale };

@@ -1,5 +1,6 @@
 <script>
   import { createEventDispatcher } from "svelte";
+  import { locales } from "../../config/l10n";
 
   export let value;
 
@@ -24,8 +25,9 @@
 <div class="locale-selector">
   <div class="select">
     <select value={value} on:change={handleLocaleChange}>
-      <option value="en">English</option>
-      <option value="ar">عربي</option>
+      {#each Object.keys(locales) as locale}
+        <option value={locale}>{locales[locale]}</option>
+      {/each}
     </select>
   </div>
 </div>
