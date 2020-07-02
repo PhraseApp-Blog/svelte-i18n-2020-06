@@ -3,7 +3,9 @@
     setupI18n,
     isLocaleLoaded,
     locale,
+    dir,
   } from "./services/i18n";
+  import { bulmaUrl } from "./services/css";
   import Header from "./components/Layout/Header.svelte";
   import LocaleSelector from
     "./components/UI/LocaleSelector.svelte";
@@ -11,7 +13,14 @@
   import CharacterList from
     "./components/Characters/CharacterList.svelte";
 
-   setupI18n();
+  setupI18n();
+
+  $: if (document.dir !== $dir) {
+    document.dir = $dir;
+
+    document.getElementById("bulmaCssLink").href =
+      bulmaUrl($dir);
+  }
 </script>
 
 {#if $isLocaleLoaded}

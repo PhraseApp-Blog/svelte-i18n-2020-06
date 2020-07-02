@@ -49,6 +49,10 @@ const isLocaleLoaded = derived(
     !$isLoading && !!$dictionary[_activeLocale],
 );
 
+const dir = derived(locale, ($locale) =>
+  $locale === "ar" ? "rtl" : "ltr",
+);
+
 function loadJson(url) {
   return fetch(url).then((response) => response.json());
 }
@@ -69,4 +73,4 @@ function supported(locale) {
   }
 }
 
-export { _, setupI18n, isLocaleLoaded, locale };
+export { _, setupI18n, isLocaleLoaded, locale, dir };
