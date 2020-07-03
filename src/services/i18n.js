@@ -15,7 +15,7 @@ const MESSAGE_FILE_URL_TEMPLATE = "/lang/{locale}.json";
 
 let _activeLocale;
 
-const isLoading = writable(false);
+const isDownloading = writable(false);
 
 function setupI18n(options = {}) {
   const locale_ = supported(
@@ -26,7 +26,7 @@ function setupI18n(options = {}) {
   init({ initialLocale: locale_ });
 
   if (!hasLoadedLocale(locale_)) {
-    isLoading.set(true);
+    isDownloading.set(true);
 
     const messagesFileUrl = MESSAGE_FILE_URL_TEMPLATE.replace(
       "{locale}",
@@ -40,15 +40,17 @@ function setupI18n(options = {}) {
 
       locale.set(locale_);
 
-      isLoading.set(false);
+      isDownloading.set(false);
     });
   }
 }
 
 const isLocaleLoaded = derived(
-  [dictionary, isLoading],
-  ([$dictionary, $isLoading]) =>
-    !$isLoading && !!$dictionary[_activeLocale],
+  [isDownloading, dictionary],
+  ([$isDownloading, $dictionary]) =>
+    !$isDownloading &&
+    $dictionary[_activeLocale] &&
+    Object.keys($dictionary[_activeLocale]).length > 0,
 );
 
 const dir = derived(locale, ($locale) =>
