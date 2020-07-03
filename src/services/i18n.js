@@ -1,13 +1,13 @@
 import { get, derived, writable } from "svelte/store";
 import {
-  addMessages,
-  locale,
-  init,
-  dictionary,
   _,
-  getLocaleFromNavigator,
   date,
+  init,
+  locale,
   number,
+  dictionary,
+  addMessages,
+  getLocaleFromNavigator,
 } from "svelte-i18n";
 import { locales, fallbackLocale } from "../config/l10n";
 
@@ -28,12 +28,12 @@ function setupI18n(options = {}) {
   if (!hasLoadedLocale(locale_)) {
     isLoading.set(true);
 
-    const messsagesFileUrl = MESSAGE_FILE_URL_TEMPLATE.replace(
+    const messagesFileUrl = MESSAGE_FILE_URL_TEMPLATE.replace(
       "{locale}",
       locale_,
     );
 
-    return loadJson(messsagesFileUrl).then((messages) => {
+    return loadJson(messagesFileUrl).then((messages) => {
       _activeLocale = locale_;
 
       addMessages(locale_, messages);
